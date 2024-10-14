@@ -100,7 +100,7 @@ function playMusic() {
 }
 function handleInput() {
     let word = document.querySelector("#inp-word").value.trim();
-    let regex = /^[a-zA-Z]*$/;
+    let regex = /^$/;
     let htmlContent = "";
     showError.innerHTML = "";
     if (!regex.test(word)) {
