@@ -1,7 +1,7 @@
 //class gửi request cho server
 const baseURL = "https://api.dictionaryapi.dev/api/v2/entries/en";
 const showResult = document.querySelector(".result");
-
+const showError = document.querySelector(".div_error")
 class Http {
     get(url) {
         return fetch(url)
@@ -63,7 +63,7 @@ class RenderUI {
         // const listen = (clone.phonetics[0]["audio"] || clone.phonetics[1]["audio"]);
 
         const listen = (clone.phonetics)[0].audio || "none" || (clone.phonetics)[1].audio || (clone.phonetics)[2].audio || (clone.phonetics)[3].audio;
-        
+
         let htmlContent =
             `
         <div class="result">
@@ -92,24 +92,48 @@ class RenderUI {
         showResult.innerHTML = htmlContent;
     }
 }
-function playMusic(){
+function playMusic() {
     let audio = document.querySelector("#myAudio");
-    if(document.querySelector(".audioCheck").getAttribute("src") != "none"){
+    if (document.querySelector(".audioCheck").getAttribute("src") != "none") {
         audio.play();
+    }
+}
+function handleInput() {
+    let word = document.querySelector("#inp-word").value.trim();
+    let regex = /^[a-zA-Z]*$/;
+    let htmlContent = "";
+    showError.innerHTML = "";
+    if (!regex.test(word)) {
+        htmlContent = `
+        <div class="div_error" id="error">
+                The word is not valid!
+                <br>
+                Please try again!
+            </div>
+        `
+        showError.innerHTML = htmlContent;
+    } else if (word.length == 0) {
+        htmlContent = `
+        <div class="div_error" id="error">
+                That field is required!!
+            </div>
+        `
+        showError.innerHTML = htmlContent;
     }
 }
 
 document.querySelector(".father__input").addEventListener("submit", (event) => {
     event.preventDefault();
     //dom data of input
-    let word = document.querySelector("#inp-word").value;
+    let word = document.querySelector("#inp-word").value.trim();
     // instance of 2 class Store and RenderUI
     let store = new Store();
     let ui = new RenderUI();
-
+    handleInput();
     store.getInforWord(word)
         .then((inforWord) => {
             ui.renderInforWord(inforWord);
+            showError.innerHTML = "";
         })
 });
 

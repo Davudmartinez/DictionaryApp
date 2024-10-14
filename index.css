@@ -59,8 +59,11 @@ body{
     outline: none;
     color: #ffffff;
     border-radius: 0.5rem;
+    transition: 0.2s ease-in-out;
 }
-
+.custom-btn:hover{
+    transform: translateY(-3px);
+}
 .result{
     position: relative;
 }
@@ -95,4 +98,10 @@ body{
     border-left: 5px solid #ae9cff;
     padding-left: 5rem;
     margin-top: 3rem    ;
+}
+.div_error{
+    color: red;
+    margin: 5rem;
+    text-align: center;
+    font-size: 2rem;
 }
