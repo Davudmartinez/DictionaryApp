@@ -1,7 +1,10 @@
-//class gửi request cho server
+//Bộ API của Dictionary 
 const baseURL = "https://api.dictionaryapi.dev/api/v2/entries/en";
+//tạo sẵn biến để lát dom tới cho dễ 
 const showResult = document.querySelector(".result");
 const showError = document.querySelector(".div_error")
+
+//class gửi request cho server
 class Http {
     get(url) {
         return fetch(url)
@@ -19,6 +22,7 @@ class Store {
     constructor() {
         this.http = new Http();
     }
+    //hàm nhận về word và thông tin của nó
     getInforWord(word) {
         return this.http.get(`${baseURL}/${word}`);
     }
@@ -28,28 +32,24 @@ class Store {
 //class hiển thị data lên giao diện 
 class RenderUI {
     renderInforWord(inforWord) {
-        const arrayWord = inforWord[0].word;
+        //lấy về từ vựng hay gọi cách khác là chữ ()
+        const word = inforWord[0].word;
+        // lấy về thông tin của chữ
         const details = (inforWord[0].meanings)[0]["partOfSpeech"];
-        // const text = (inforWord[1].phonetics)[0]["text"] || (inforWord[1].phonetics)[1]["text"];
         //tìm phonetics nếu trường hợp nó nằm ở vị trí thứ 2
         const text = (inforWord[0].phonetics)[0]["text"] || (inforWord[0].phonetics)[1]["text"];
         //clone này dùng truy cập vào mảng meanings đọc cho dễ <3
         const clone = inforWord[0];
         //tìm definitions trong mảng meanings của api
         const defi =
-            (clone.meanings[0]["definitions"])[0]["definition"] || "cai dmm api rac"
+            (clone.meanings[0]["definitions"])[0]["definition"] || "The API has no data about this vocabulary"
             || (clone.meanings[0]["definitions"])[1]["definition"]
             || (clone.meanings[0]["definitions"])[2]["definition"]
             || (clone.meanings[0]["definitions"])[3]["definition"]
-            || (clone.meanings[0]["definitions"])[4]["definition"]
-        //tạo 1 con biến đi vào thằng definitions làm việc cho dễ
-        // const clone2 = clone.meanings[1]["definitions"];
+            || (clone.meanings[0]["definitions"])[4]["definition"]       
         //tìm example trong definitions (khó)
         const exam =
-            // (clone.meanings[0]["definitions"])[0]["example"]
-            // || (clone.meanings[2]["definitions"])[0]["example"]
-            // || (clone.meanings[1]["definitions"])[0]["example"]
-            (clone.meanings[0]["definitions"])[0]["example"] || "cai dmm api rac"
+            (clone.meanings[0]["definitions"])[0]["example"] || "The API has no data about this vocabulary"
             || (clone.meanings[0]["definitions"])[1]["example"]
             || (clone.meanings[0]["definitions"])[2]["example"]
             || (clone.meanings[1]["definitions"])[1]["example"]
@@ -71,7 +71,7 @@ class RenderUI {
                     <source class="audioCheck" src="${listen}" type="audio/mpeg">
                 </audio>
                 <div class="word">
-                    <h3>${arrayWord}</h3>
+                    <h3>${word}</h3>
                     <button onclick="playMusic()">
                         <i class="fa-solid fa-volume-high"></i>
                     </button>
