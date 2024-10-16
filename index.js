@@ -61,7 +61,6 @@ class RenderUI {
             || (clone.meanings[3]["definitions"])[1]["example"];
 
         // const listen = (clone.phonetics[0]["audio"] || clone.phonetics[1]["audio"]);
-
         const listen = (clone.phonetics)[0].audio || "none" || (clone.phonetics)[1].audio || (clone.phonetics)[2].audio || (clone.phonetics)[3].audio;
 
         let htmlContent =
@@ -72,9 +71,7 @@ class RenderUI {
                 </audio>
                 <div class="word">
                     <h3>${word}</h3>
-                    <button onclick="playMusic()">
-                        <i class="fa-solid fa-volume-high"></i>
-                    </button>
+                    
                 </div>
                 <div class="details">
                     <p>${details}</p>
@@ -121,7 +118,6 @@ function handleInput() {
         showError.innerHTML = htmlContent;
     }
 }
-
 document.querySelector(".father__input").addEventListener("submit", (event) => {
     event.preventDefault();
     //dom data of input
@@ -137,7 +133,16 @@ document.querySelector(".father__input").addEventListener("submit", (event) => {
         })
 });
 
-
-
+//chỗ hiển thị require còn gà có thời gian sẽ chỉnh sửa
+/*
+<button onclick="playMusic()">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+ chỗ này của phần volume nhưng chưa dùng được
+ sẽ fix trong tương lai
+ 
+ DÒNG 40 tới 43 của html 
+ và 74 của js
+*/
 
 

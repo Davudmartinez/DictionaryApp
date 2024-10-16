@@ -1,20 +1,19 @@
-/* rs css */
+/* Reset CSS */
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 html{
     font-size: 62.6%;
 }
-
 body{
     font-size: 1.6rem;
     font-family: "Poppins", sans-serif;
     background-color: #ae9cff;
 }
-
+/* ----------------------------BUILD--------------------------- */
+/* container */
 .container{
     background-color: #ffffff;
     width: 90vmin;
@@ -26,7 +25,6 @@ body{
     border-radius: 3rem;
     box-shadow: 0 2rem 4rem rgba(38, 33, 61, 0.2);
 }
-
 .search-box{
     width: 100%;
     display: flex;
@@ -59,7 +57,7 @@ body{
     outline: none;
     color: #ffffff;
     border-radius: 0.5rem;
-    transition: 0.2s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 .custom-btn:hover{
     transform: translateY(-3px);
@@ -67,18 +65,15 @@ body{
 .result{
     position: relative;
 }
-
 .result h3{
     font-size: 3rem;
     color: #1f194c;
 }
-
 .word{
     display: flex;
     justify-content: space-between;
     margin-top: 5rem;
 }
-
 .details{
     display: flex;
     color: #b3b6d4;
@@ -87,11 +82,9 @@ body{
 .details p{
     margin-right: 2rem;
 }
-
 .word-meaning{
     color: #575a7b;
 }
-
 .word-example{
     color: #575a7b;
     font-style: italic; 
@@ -100,8 +93,8 @@ body{
     margin-top: 3rem    ;
 }
 .div_error{
-    color: red;
+    color: rgb(202, 12, 193);
     margin: 5rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
