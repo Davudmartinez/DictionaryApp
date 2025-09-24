@@ -147,5 +147,5 @@ document.querySelector(".father__input").addEventListener("submit", (event) => {
  
  DÒNG 40 tới 43 của html 
  và 74 của js
- Giu 1, 2 respo 
+ Giữ respo
 */
